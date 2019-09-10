@@ -63,7 +63,7 @@ lstm_size = 256
 lstm_layers = 1
 batch_size = 500
 learning_rate = 0.001
-n_words = len(vocab_to_int) + 1 # Adding 1 because we use 0's for padding, dictionary started at 1
+n_words = len(vocab_to_int) + 1 
 graph = tf.Graph()
 with graph.as_default():
     inputs_ = tf.placeholder(tf.int32, [None, None], name='inputs')
