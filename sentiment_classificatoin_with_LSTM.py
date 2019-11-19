@@ -89,6 +89,8 @@ with graph.as_default():
     predictions = tf.contrib.layers.fully_connected(outputs[:, -1], 1, activation_fn=tf.sigmoid)
     cost = tf.losses.mean_squared_error(labels_, predictions)
     optimizer = tf.train.AdamOptimizer(learning_rate).minimize(cost)
+    correct_pred = tf.equal(tf.cast(tf.round(predictions), tf.int32), labels_)
+    accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
     
 # Batching    
 def get_batches(x, y, batch_size=100):
